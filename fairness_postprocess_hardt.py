@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Hardt, Price, Srebro (2016) — Post-processing for fairness:
 - Equalized Odds:  Y_hat ⟂ A | Y  (equal TPR and FPR across groups)
@@ -8,7 +7,7 @@ This implementation is a practical, reusable extractor of the methodology descri
 "Equality of Opportunity in Supervised Learning" (Hardt et al., 2016).
 
 It supports:
-1) Post-processing a *real-valued score* (recommended): learn per-group randomized thresholding
+1) Post-processing a *real-valued score* : learn per-group randomized thresholding
    (implemented as a distribution over thresholds per group via linear programming).
 2) Post-processing a *binary predictor*: learn per-group randomized "flip" probabilities
    depending on (A, Y_pred) via linear programming.
