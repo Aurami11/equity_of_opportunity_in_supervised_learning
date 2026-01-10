@@ -91,56 +91,6 @@ local_tgz_path = "CASdatasets_1.2-0.tar.gz"
 
 ---
 
-## Utiliser le script en ligne de commande (CLI)
-
-Le script `fairness_postprocess_hardt.py` s’exécute sur un **CSV** contenant :
-- une colonne label binaire (0/1),
-- une colonne attribut sensible (groupe),
-- **et** soit :
-  - une colonne `score` (float) → *score post-processing*
-  - **ou** une colonne `pred` (0/1) → *binary post-processing*
-
-### Post-traitement à partir d’un score (recommandé)
-
-```bash
-python fairness_postprocess_hardt.py \
-  --input data.csv \
-  --label ClaimOcc \
-  --group Gender \
-  --score proba \
-  --method equalized_odds \
-  --cost_fp 1 \
-  --cost_fn 10 \
-  --n_thresholds 250 \
-  --seed 0 \
-  --output fair_predictions.csv
-```
-
-### Post-traitement à partir d’une prédiction binaire
-
-```bash
-python fairness_postprocess_hardt.py \
-  --input data.csv \
-  --label y \
-  --group A \
-  --pred y_hat \
-  --method equal_opportunity \
-  --cost_fp 1 \
-  --cost_fn 10 \
-  --seed 0 \
-  --output fair_predictions.csv
-```
-
-### Sorties
-
-Le script écrit un CSV contenant :
-- `y_fair_proba` : probabilité (en sortie du post-traitement) `P(Ỹ=1 | …)`
-- `y_fair` : tirage binaire selon cette probabilité (prédicteur **randomisé**)
-
-Il affiche aussi un rapport “Before/After” par groupe (TP, FP, TN, FN, TPR, FPR, etc.).
-
----
-
 ## Utiliser le script comme module Python
 
 ### Score post-processing
