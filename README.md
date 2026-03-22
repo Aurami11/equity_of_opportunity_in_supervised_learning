@@ -133,3 +133,10 @@ y_test_fair = bp.predict(y_pred=yhat_test, a=A_test)
 ## Référence
 
 Hardt, Price, Srebro (2016) — *Equality of Opportunity in Supervised Learning*.
+
+---
+
+## Auteur
+Jules D'ALMEIDA
+Frege Meli
+Ben Soro
